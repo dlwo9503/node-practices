@@ -1,5 +1,5 @@
 /**
- * jaeseong-math.js 파일 모듈 테스트
+ * jaeseong-math 파일 모듈 테스트
  */
 const jsMath = require('../jaeseong-math/jaeseong-math');
 
