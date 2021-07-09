@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "douzone-busan-math": "^1.0.0"
+    "douzone-busan-math": "^1.0.0",
+    "jaeseong-math": "^1.0.0"
   }
 }
