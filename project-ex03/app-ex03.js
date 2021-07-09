@@ -5,7 +5,7 @@
  * npm i douzone-busan-math
  * 명령으로 설치 후, 테스트 할 것
  */
- const dzMath = require('douzone-busan-math');
+ const dzMath = require('jaeseong-math');
 
  console.log(dzMath.sum(1,2,3,4));
  console.log(dzMath.max(-10,2,3,40));
