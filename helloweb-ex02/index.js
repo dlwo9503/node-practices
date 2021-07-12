@@ -1,24 +1,31 @@
+const express = require('express');
 const http = require('http');   //  core module
 const path = require('path');
-const express = require('express');
 
 const mainRouter = require('./routes/main');
 const helloRouter = require('./routes/hello');
+const userRouter = require('./routes/user');
 const port = 8080;
 
 // Application Setup
 const application = express()
     // 1. static serve
     .use(express.static(path.join(__dirname, "public")))
-    // 2. view engine setup
-    // 3. request router
-    .all('*', function(req, res, next){ // 모든게 다 들어옴
+    // 2. request body parser
+    .use(express.urlencoded({extended: true})) // application/x-www-form-urlencoded
+    .use(express.json()) // application/json
+    // 3. view engine setup
+    .set("views",path.join(__dirname,"views"))
+    .set("view engine", 'ejs')
+    // 4. request router
+    .all("*", function(req, res, next) {
         res.locals.req = req;
         res.locals.res = res;
         next();
     })
     .use('/', mainRouter)
-    .use('/hello', helloRouter);
+    .use('/hello', helloRouter)
+    .use('/user', userRouter);
 
 // Server Setup
 http.createServer(application)
@@ -30,7 +37,7 @@ http.createServer(application)
         }
         switch(error.code) {
             case 'EACCESS' :
-                console.error(`Port ${port} requires privileges`);
+                console.info(`Port ${port} requires privileges`);
                 process.exit(1);
                 break;
             case 'EADDRINUSE' :
@@ -40,4 +47,4 @@ http.createServer(application)
             default :
                 throw error;
         }
-    }).listen(port)
+    }).listen(port);
