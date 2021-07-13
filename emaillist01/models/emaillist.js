@@ -26,7 +26,7 @@ module.exports = {
         const query = util.promisify(conn.query).bind(conn);
 
         try {
-            return await query("insert into emaillist values(null, ?, ?, ?)", [emaillist.fn, emaillist.ln, emaillist.email]);
+            return await query("insert into emaillist values(null, ?, ?, ?)", Object.values(emaillist));
         } catch(e) {
             console.error(e);
         } finally {
