@@ -21,5 +21,16 @@ module.exports = {
     },
     insert: async function(emaillist) {
         console.log(emaillist);
+        console.log(Object.values(emaillist)); // 배열을 객체로 만들어 줌
+        const conn = dbconn();
+        const query = util.promisify(conn.query).bind(conn);
+
+        try {
+            return await query("insert into emaillist values(null, ?, ?, ?)", [emaillist.fn, emaillist.ln, emaillist.email]);
+        } catch(e) {
+            console.error(e);
+        } finally {
+            conn.end();
+        }
     }
 }
