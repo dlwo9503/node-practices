@@ -11,7 +11,7 @@ module.exports = {
         const query = util.promisify(conn.query).bind(conn);
 
         try {
-            const results = await query("select first_name as firstName, last_name as lastName, email from emaillist order by no desc", []);
+            const results = await query("select no, name, message, date_format(reg_date, '%Y-%m-%d') as regDate from guestbook order by no desc", []);
             return results;    
         } catch(e) {
             console.error(e);
@@ -19,14 +19,26 @@ module.exports = {
             conn.end();
         }
     },
-    insert: async function(emaillist) {
-        console.log(emaillist);
-        console.log(Object.values(emaillist)); // 객체를 배열로 만들어 줌
+    insert: async function(guestbook) {
+        console.log(guestbook);
+        console.log(Object.values(guestbook)); // 배열을 객체로 만들어 줌
         const conn = dbconn();
         const query = util.promisify(conn.query).bind(conn);
 
         try {
-            return await query("insert into emaillist values(null, ?, ?, ?)", Object.values(emaillist));
+            return await query("insert into guestbook values(null, ?, ?, ?, now())", Object.values(guestbook));
+        } catch(e) {
+            console.error(e);
+        } finally {
+            conn.end();
+        }
+    },
+    delete: async function(guestbook) {
+        const conn = dbconn();
+        const query = util.promisify(conn.query).bind(conn);
+
+        try {
+            return await query("delete from guestbook where no = ? and password = ?", Object.values(guestbook));
         } catch(e) {
             console.error(e);
         } finally {
