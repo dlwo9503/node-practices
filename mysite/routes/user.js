@@ -14,6 +14,5 @@ router.route("/logout").get(controller.logout);
 router.route("/update").get(auth, controller.update);
 router.route("/update").post(controller._update);
 
-
 module.exports = router;
 // -> controllers

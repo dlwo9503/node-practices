@@ -10,6 +10,7 @@ dotnev.config({path: path.join(__dirname, 'config/db.env')});
 
 const mainRouter = require('./routes/main');
 const userRouter = require('./routes/user');
+const guestbookRouter = require('./routes/guestbook');
 
 // Application Setup
 const application = express()
@@ -35,6 +36,7 @@ const application = express()
     })
     .use('/', mainRouter) // -> routes
     .use('/user', userRouter)
+    .use('/guestbook', guestbookRouter)
     .use((req, res) => res.render('error/404'))// 이상하게 입력한 경로 처리, 404파일로 보냄
 
 // Server Setup    
