@@ -5,6 +5,7 @@ npm init -y
 
 ## 설치패키지
 npm i express
+npm i express-session
 npm i ejs
 npm i dotenv
 npm i sequelize
