@@ -78,7 +78,7 @@ module.exports = {
             // }
 
             const {[req.body.password == '' ? 'password' : '']: remove, ...updateObject} = req.body; // 패스워드 비었을때 처리
-            await models.User.update(updateObject, {
+            await models.User.updat(updateObject, {
                 where: {
                     no: req.session.authUser.no    
                 }

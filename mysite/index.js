@@ -10,6 +10,7 @@ dotnev.config({path: path.join(__dirname, 'config/db.env')});
 
 const mainRouter = require('./routes/main');
 const userRouter = require('./routes/user');
+const userApiRouter = require('./routes/user-api');
 const guestbookRouter = require('./routes/guestbook');
 const errorRoute = require('./routes/error');
 
@@ -40,7 +41,8 @@ const application = express()
     })
     .use('/', mainRouter) // -> routes
     .use('/user', userRouter)
-    .use('/guestbook', guestbookRouter)
+    .use('/api/user', userApiRouter)
+    .use('/guestbook', guestbookRouter) //
     .use(errorRoute.error404)
     .use(errorRoute.error500);
 
