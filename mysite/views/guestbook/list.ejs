@@ -26,27 +26,28 @@
 					</table>
 				</form>
 				<ul>
+					<%
+					const count = list.length;
+					for(let i = 0; i < list.length; i++) {
+						const vo = list[i];
+					%>
 					<li>
-						<%
-						for(let i = 0; i < list.length; i++) {
-							const vo = list[i];
-						%>
 						<table>
 							<tr>
-								<td>[<%=i+1 %>]</td>
+								<td>[<%=count - i %>]</td>
 								<td><%=vo.name %></td>
-								<td><%=vo.regDate %></td>
+								<td><%=moment(vo.regDate).format('YYYY-MM-DD hh:mm:ss') %></td>
 								<td><a href="/guestbook/delete/<%=vo.no %>">삭제</a></td>
 							</tr>
 							<tr>
 								<td colspan=4><%-vo.message.replaceAll("\n","<br/>") %></td>
 							</tr>
 						</table>
-						<%
-							}
-						%>
 						<br>
 					</li>
+					<%
+						}
+					%>
 				</ul>
 			</div>
 		</div>

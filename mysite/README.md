@@ -10,6 +10,9 @@ npm i ejs
 npm i dotenv
 npm i sequelize
 npm i mysql2
+npm i moment
+npm i winston
+npm i winston-daily-rotate-file // 로그 남기고 용량 커지면 압축하는거
 npm i -D nodemon
 
 ## scripte in package.json
@@ -27,6 +30,8 @@ npm i -D nodemon
     |--- package-lock.json
     |--- /node-mobules
     |--- /config
+    |--- /loggin
+    |--- /logs
     |--- /public
     |--- /routes
     |--- /controllers
