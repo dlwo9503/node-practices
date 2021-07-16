@@ -21,6 +21,7 @@ $(function(){ // $가 붙으면 jQuery라고 생각하면 됨
 			url: "/api/user/checkemail?email=" + email,
 			type: "get",
 			dateType: "json",
+			// contentType: "application/json", // json형태로 하고싶으면
 			error: function(xhr,status, e){
 				console.error(status, e);
 			},

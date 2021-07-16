@@ -12,6 +12,7 @@ const mainRouter = require('./routes/main');
 const userRouter = require('./routes/user');
 const userApiRouter = require('./routes/user-api');
 const guestbookRouter = require('./routes/guestbook');
+const guestbookApiRouter = require('./routes/guestbook-api');
 const errorRoute = require('./routes/error');
 
 //Logging
@@ -41,8 +42,10 @@ const application = express()
     })
     .use('/', mainRouter) // -> routes
     .use('/user', userRouter)
-    .use('/api/user', userApiRouter)
     .use('/guestbook', guestbookRouter) //
+
+    .use('/api/user', userApiRouter)
+    .use('/api/guestbook', guestbookApiRouter) //
     .use(errorRoute.error404)
     .use(errorRoute.error500);
 

@@ -10,5 +10,13 @@ router.route("/needauth").get(authorized, function(req, res){
     })
 });
 
+router.route("/error").get(function(req, res, next){
+    try {
+        throw new Error('Broken');
+    } catch (e) {
+        next(e);
+    }
+});
+
 module.exports = router;
 // -> controllers
