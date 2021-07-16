@@ -45,7 +45,9 @@ $(function(){
 			<div id="gallery">
 				<div>
 					<h1>갤러리</h1>
+					<% if(req.session.authUser && req.session.authUser.role === 'ADMIN') { %>
 					<a href="" id="upload-image">이미지 올리기</a>
+					<% } %>
 				</div>
 				<ul>
 				<c:forEach var="vo" items="${list }" varStatus="status" >
@@ -56,10 +58,11 @@ $(function(){
 								class="image",
 								title="<%=gallery.comment%>"
 								style="background-image:url('<%=gallery.url%>')">&nbsp;</a>
-								
+							<% if(req.session.authUser && req.session.authUser.role === 'ADMIN') { %>
 							<a	href="/gallery/delete/<%=gallery.no%>"
 								class="del-button"
 								title="삭제">삭제</a>
+							<% } %>
 						</li>
 					<% }) %>
 					</c:forEach>																																				

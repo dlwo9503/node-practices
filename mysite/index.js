@@ -20,6 +20,7 @@ const errorRoute = require('./routes/error');
 
 //Logging
 const logger = require('./logging');
+const authorized = require('./routes/authorized');
 
 // Application Setup
 const application = express()
@@ -51,6 +52,7 @@ const application = express()
     .use('/user', userRouter)
     .use('/guestbook', guestbookRouter) //
     .use('/gallery', galleryRouter) //
+    // .use('/admin', authorized('ADMIN') ,adminRouter) //
 
     .use('/api/user', userApiRouter)
     .use('/api/guestbook', guestbookApiRouter) //
