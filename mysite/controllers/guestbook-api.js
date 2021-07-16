@@ -13,6 +13,7 @@ module.exports = {
                     regDate: new Date()
                 }),
                 message: null
+                // res.redirect('');
             })
         } catch (e) {
             next(e);
@@ -20,14 +21,42 @@ module.exports = {
     },
     read: async function(req, res, next){
         try {
-            
+            const startNo = req.query.son || 0;
+            console.log(startNo);
+            // sql : select..... limit
+            res.status(200).send({
+                result: 'success',
+                data:[{
+                    no: 9,
+                    name: '둘리',
+                    message: '호이',
+                    regDate: new Date()
+                }, {
+                    no: 8,
+                    name: '마이콜',
+                    message: '호이',
+                    regDate: new Date()
+                }, {
+                    no: 7,
+                    name: '도우너',
+                    message: '호이',
+                    regDate: new Date()
+                }],
+                message: null
+            })
         } catch (e) {
             next(e);
         }
     },
     delete: async function(req, res, next){
         try {
-            
+            console.log(req.params.no + ":" + req.body.password);
+            // sql delete
+            res.status(200).send({
+                result: 'success',
+                data: req.params.no,
+                message: null
+            })
         } catch (e) {
             next(e);
         }
