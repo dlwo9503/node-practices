@@ -6,6 +6,7 @@ router.route("/list").get(controller.list);
 router.route('/add').post(controller.add);
 router.route('/delete/:no').get(controller.form);
 router.route('/delete').post(controller.delete);
+router.route('/spa').get(controller.spa);
 
 module.exports = router;
 // -> controllers

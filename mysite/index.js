@@ -14,6 +14,8 @@ const userRouter = require('./routes/user');
 const guestbookRouter = require('./routes/guestbook');
 const galleryRouter = require('./routes/gallery');
 
+const adminRouter = require('./routes/admin')
+
 const userApiRouter = require('./routes/user-api');
 const guestbookApiRouter = require('./routes/guestbook-api');
 const errorRoute = require('./routes/error');
@@ -52,7 +54,8 @@ const application = express()
     .use('/user', userRouter)
     .use('/guestbook', guestbookRouter) //
     .use('/gallery', galleryRouter) //
-    // .use('/admin', authorized('ADMIN') ,adminRouter) //
+
+    .use('/admin', authorized('ADMIN') ,adminRouter) //
 
     .use('/api/user', userApiRouter)
     .use('/api/guestbook', guestbookApiRouter) //

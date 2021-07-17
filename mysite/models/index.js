@@ -14,6 +14,7 @@ const sequelize = new Sequelize(
 const User = require('./User')(sequelize);
 const Guestbook = require('./Guestbook')(sequelize);
 const Gallery = require('./Gallery')(sequelize);
+const Site = require('./Site')(sequelize);
 
 User.sync({ // 싱크 옵션
     force: process.env.TABLE_CREATE_ALWAYS === 'true', // 트루면 트루로 세팅됨
@@ -27,5 +28,9 @@ Gallery.sync({
     force: process.env.TABLE_CREATE_ALWAYS === 'true',
     alter: process.env.TABLE_ALTER_SYNC === 'true'
 })
+Site.sync({
+    force: process.env.TABLE_CREATE_ALWAYS === 'true',
+    alter: process.env.TABLE_ALTER_SYNC === 'true'
+})
 
-module.exports = {Sequelize ,User, Guestbook, Gallery};
+module.exports = {Sequelize ,User, Guestbook, Gallery, Site};
