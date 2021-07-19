@@ -1,14 +1,19 @@
 const express = require('express');
-const authorized = require('./authorized');
-const controller = require('../controllers/admin');
+const mainController = require('../controllers/admin/main');
+const guestbookController = require('../controllers/admin/guestbook');
+const boardController = require('../controllers/admin/board');
+const userController = require('../controllers/admin/user');
 
 const router = express.Router();
-router.route("").get(controller.main);
-router.route("/main/update").post(controller.update);
-router.route("/main/update").post(controller.update);
-// router.route("/guestbook").get(controller.guestbook);
-// router.route("board").get(controller.board);
-// router.route("user").get(controller.user);
+
+router.route('').get(mainController.index);
+router.route('/main/update').post(mainController.update);
+
+router.route('/user').get(userController.index);
+router.route('/board').get(boardController.index);
+router.route('/guestbook').get(guestbookController.index);
+
+module.exports = router;
 
 module.exports = router;
 // -> controllers

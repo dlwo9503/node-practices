@@ -13,18 +13,18 @@
 				<div id="site-form">
 					<form method="post" action="/admin/main/update" enctype="multipart/form-data">
 						<label class="block-label" for="title">사이트 타이틀</label>
-						<input id="title" name="title" type="text" value="<%=vo.title %>">
+						<input id="title" name="title" type="text" value="<%=site ? site.title : '' %>">
 						
 						<label class="block-label" for="welcome">환영 메세지</label>
-						<input id="welcome" name="welcome" type="text" value="<%=vo.welcome %>">
+						<input id="welcome" name="welcome" type="text" value="<%=site.welcome %>">
 
 						<label class="block-label">프로필 이미지</label>
-						<img id="profile" src="<%=vo.profile %>">
-						<input type="hidden" name="profile" value="<%=vo.profile %>">
+						<img id="profile" src="<%=site.profile %>">
+						<input type="hidden" name="profile" value="<%=site.profile %>">
 						<input type="file" name="url">
 
 						<label class="block-label">사이트 설명</label>
-						<textarea name="description"><%=vo.description %></textarea>
+						<textarea name="description"><%=site.description %></textarea>
 						
 						<input type="submit" value="변경" />
 					</form>
