@@ -15,6 +15,17 @@ const User = require('./User')(sequelize);
 const Guestbook = require('./Guestbook')(sequelize);
 const Gallery = require('./Gallery')(sequelize);
 const Site = require('./Site')(sequelize);
+const Board = require('./Board')(sequelize);
+
+User.hasMany(Board, {
+    foreignKey: { // 외래키
+        name: 'userNo',
+        allowNull: false,
+        constraints: true,
+        onDelete: 'CASCADE'
+    }
+})
+Board.belongsTo(User);
 
 User.sync({ // 싱크 옵션
     force: process.env.TABLE_CREATE_ALWAYS === 'true', // 트루면 트루로 세팅됨
@@ -32,5 +43,9 @@ Site.sync({
     force: process.env.TABLE_CREATE_ALWAYS === 'true',
     alter: process.env.TABLE_ALTER_SYNC === 'true'
 })
+Board.sync({
+    force: process.env.TABLE_CREATE_ALWAYS === 'true',
+    alter: process.env.TABLE_ALTER_SYNC === 'true'
+})
 
-module.exports = {Sequelize ,User, Guestbook, Gallery, Site};
+module.exports = {User, Guestbook, Gallery, Site, Board};

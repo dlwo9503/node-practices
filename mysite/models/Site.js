@@ -24,7 +24,7 @@ module.exports = function(sequelize){
             allowNull: false, // notnull
         }
     }, {
-        underscored: true,
+        underscored: true, // 스네이크
         freezeTableName: true,
         timestamps: true,
         createdAt: false,
