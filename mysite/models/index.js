@@ -20,6 +20,7 @@ const Board = require('./Board')(sequelize);
 User.hasMany(Board, {
     foreignKey: { // 외래키
         name: 'userNo',
+        type: DataTypes.INTEGER,
         allowNull: false,
         constraints: true,
         onDelete: 'CASCADE'

@@ -3,7 +3,7 @@ const path = require('path');
 const assert = require('assert').strict;
 dotenv.config({path:path.join(path.resolve(__dirname,'..'), 'config/db.env')});
 
-describe('Model User', function() {
+describe('Fetch User(no=1)', function() {
     let models = null;
     before(async function() {
         models = require('../models');

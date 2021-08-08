@@ -44,6 +44,18 @@ describe('Model Board', function() {
         board.no.should.not.equals(undefined);
     });
 
+    it("Fetch Boards by user(test)", async function() {
+        const results = await models.Board.findAll({
+            where: {
+                userNo: user.no
+            },
+            include: { // join
+                model: models.User,
+                require: true
+            }
+        })
+        results.should.have.lengthOf(3);
+    })
     after(async function(){
         await models.Board.destroy({ // 보드 데이터 삭제
             where: {

@@ -35,7 +35,7 @@ module.exports = function(sequelize){
             allowNull: false // notnull
         },
         orderNo: {
-            field: 'orderNo',
+            field: 'order_no',
             type: DataTypes.INTEGER,
             allowNull: true // notnull
         },
